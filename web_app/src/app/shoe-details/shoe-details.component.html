@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="shoe-container" *ngIf = "shoe != null">
+        <div class="shoe-images">
+            <div class="image-list">
+                <div class="small-image">
+                    <img [src]="selectedVariant?.mainImageUrl" alt="">
+                </div>
+                <div 
+                    class="small-image"        
+                    (mouseenter)="onHoverImage(imageUrl)"
+                    (mouseleave)="onLeaveImage()"
+                    *ngFor="let imageUrl of selectedVariant.imagesUrls">
+                    <img [src]="imageUrl" alt="">
+                </div>
+            </div>
+            <div class="main-image">
+                <img [src]="tempSelectedImageURL" alt="">
+            </div>
+        </div>
+        <div class="shoe-details">
+            <div class="title">
+                <h1>{{brandName === null ? brandName :""}}</h1>
+                <h2>{{shoe.name}} - {{shoe.category}} - {{selectedVariant.color}}</h2>
+                <p>From {{selectedVariant.price}} EGP</p>
+            </div>
+            <div class="color">
+                <div class="color-text">
+                    <h3>Colour: </h3>
+                    @if (!tempColour) {
+                        <p>{{selectedVariant.color}}</p>
+                    } 
+                    @else {
+                        <p>{{tempColour}}</p>
+                    }
+                </div>
+                <div class="color-images">
+                    <div 
+                        class="small-image" 
+                        (mouseenter)="onHoverVariant(variant)"
+                        (mouseleave)="onLeaveVariant()"
+                        (click)="onChooseVariant(variant)"
+                        *ngFor="let variant of shoe.variants">
+                        <img [src]="variant.mainImageUrl" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="size">
+                <div class="dropdown" (click)="onClickDropdown()" appDropdown>
+                    <div class="placeholder">
+                        @if(!selectedSize) {
+                            <p>Choose your size</p>
+                        } @else {
+                            <p style="color: black; font-weight:bold; font-size: 22px;">{{selectedSize}}</p>
+                        }
+                        <fa-icon [icon]="faCaretUp" *ngIf="sizeDropdownOpened"></fa-icon>
+                        <fa-icon [icon]="faCaretDown" *ngIf="!sizeDropdownOpened"></fa-icon>
+                    </div>
+                    <div class="size-list">
+                        <div 
+                            class="size-bar" 
+                            (click)="onChooseSize(size.size)"
+                            *ngFor="let size of selectedVariant.sizes">
+                            <div class="item">
+                                <p class="size-number">{{size.size}}</p>
+                                @if(size.quantity <= 3) {
+                                    <p class="note">Only {{size.quantity}} left</p>
+                                }
+                                @if (size.quantity === 0) {
+                                    <p class="note" style="color: red;">Out of stock</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add">
+                <button class="add-btn" (click)="onAdd()">Add To Bag</button>
+                <button (click)="toggleFavourite()" class="favourite-btn">
+                    <i class="fa-regular fa-heart" *ngIf="!isFavourite"></i>
+                    <i class="fa-solid fa-heart" *ngIf="isFavourite"></i>
+                </button>
+            </div>
+            <div class="shipping-details">
+                <div class="shipping-time">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <div class="days">
+                        <p>2-4 working days</p>
+                        <p>free</p>
+                    </div>
+                    <p>Standard Delivery</p>
+                </div>
+                <div class="return-policy">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <p>30 day return policy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="similar-shoes">
+        <app-shoes-row-list 
+            name="Similar Shoes" 
+            [shoes]="similarShoes">
+        </app-shoes-row-list>
+    </div>
+</div>

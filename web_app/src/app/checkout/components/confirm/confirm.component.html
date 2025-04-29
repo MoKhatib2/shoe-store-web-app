@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="left">
+        <div class="expected-delivery">
+            <div class="title"> 
+                <i class="fa-solid fa-calendar-week"></i>
+                <h2>Expected delivery</h2>
+            </div>
+            <div class="delivery-date">
+                <p class="date">{{expectedStartDate | date: 'EEEE dd/MM'}} - {{expectedEndDate | date: 'EEEE dd/MM'}}</p>
+                <p class="delivery-type">Standard Delivery</p>
+                <p class="price">Free</p>
+            </div>
+        </div>
+        <div class="order">
+            <div class="title"> 
+                <i class="fa-solid fa-bag-shopping"></i>
+                <h2>Order</h2>
+            </div>
+            <div class="cart-items">
+                <div class="cart-item" *ngFor="let cartItem of cartItems">
+                    <div class="cart-item__image">
+                        <img [src]="getShoeVariant(cartItem.shoe, cartItem.variantId).mainImageUrl" alt="product image">
+                    </div>
+                    <div class="cart-item__details">
+                        <p class="brand">Adidas</p>
+                        <p class="name">{{cartItem.shoe.name}} - {{cartItem.shoe.category}}</p>
+                        <p class="price">{{cartItem.unitPrice * cartItem.quantity}} EGP</p>
+                        <p class="color">Colour: {{getShoeVariant(cartItem.shoe, cartItem.variantId).color}}</p>
+                        <p class="size">Size: {{cartItem.size}}</p>
+                    </div>
+                    <div class="cart-item__quantity">
+                        <button class="remove-btn" (click)="removeItem(cartItem._id, cartItem.quantity)">
+                            <fa-icon [icon]="faRemove"></fa-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="address">
+            <div class="title">
+                <i class="fa-solid fa-location-dot"></i>
+                <h2>Delivery address</h2>
+            </div>
+            <div class="address-details">
+                <p>{{currUser.address.streetName}} {{currUser.address.buildingNumber}}</p>
+                <p>{{currUser.address.apartmentNumber}}</p>
+                <p>{{currUser.address.postCode}} {{currUser.address.city}}</p>
+            </div>
+        </div>
+        <div class="payment-method">
+            <div class="title">
+                <i class="fa-solid fa-wallet"></i>
+                <h2>Payment method</h2>
+            </div>
+            <div class="payment-details">
+                <div class="cash" *ngIf="selectedPaymentMethod === 'cash'">
+                    <i class="fa-solid fa-money-bill"></i>
+                    <p>Cash on delivery</p>
+                </div>
+                <div class="card" *ngIf="selectedPaymentMethod === 'card'">
+                    <i class="fa-solid fa-money-bill"></i>
+                    <p>Credit/Debit card</p>
+                </div>
+            </div>
+        </div>
+        <div class="total-container">
+            <div class="delivery">
+                <p>Delivery</p>
+                <p>{{0}} EGP</p>
+            </div>
+            <div class="total">
+                <p>Total</p>
+                <p>{{getSubTotal()}} EGP</p>
+            </div>
+            <div class="next">
+                <button (click)="onConfirm()" class="next-btn">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

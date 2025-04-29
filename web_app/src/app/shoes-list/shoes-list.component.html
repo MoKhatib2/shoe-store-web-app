@@ -1,0 +1,16 @@
+<div class="main">
+    <div class="side-bar">
+        <app-filter-side-bar [disableBrandsFilter]="false" (appliedFilters)="applyFilters($event)"></app-filter-side-bar>
+    </div>
+    <div class="right">
+        <h1>Top in {{title | titlecase }}</h1>
+        <div class="list">
+            <app-shoe-item 
+            *ngFor="let shoe of filteredShoes" 
+            [shoe]="shoe" 
+            [brand]="getShoeBrandName(shoe.brand)">
+        </app-shoe-item>
+        </div>
+    </div>
+   
+</div>

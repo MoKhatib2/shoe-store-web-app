@@ -1,0 +1,8 @@
+<div 
+    [ngStyle]="{'width': boxWidth ? boxWidth : '500px', 'height': boxHeight ? boxHeight : '50px'}"
+    class="container">
+    <fa-icon [icon]="faExclamationCircle" class="icon"></fa-icon>
+    <p style="font-weight: 100; font-size: 20px; color: black">
+        {{ errorMessage }}
+    </p>
+</div>

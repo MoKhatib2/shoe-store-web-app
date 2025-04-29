@@ -1,0 +1,98 @@
+<div class="main">
+    <div class="top-bar">
+        <div class="logo">
+            <a href="/">Easy Shoes</a>
+        </div>
+        <div class="search">
+            <input type="text" id="search" placeholder="">
+            <label for="search">
+                <button class="search-btn">
+                    <fa-icon [icon]="faSearch"></fa-icon>
+                </button>     
+                <p>Search</p>
+            </label>
+        </div>
+        <div class="right-side">
+            <button class="login-btn" *ngIf="!isAuthenticated" [routerLink]="['/auth']">Login</button>
+            <div class="shopping-cart" (click)="goToCart()" *ngIf="isAuthenticated">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="cart-size" *ngIf="this.currUser.cart.length > 0">
+                    <p>{{this.currUser.cart.length}}</p>
+                </div>
+            </div>
+            <div class="profile" *ngIf="isAuthenticated" appDropdown>
+                <i class="fa-solid fa-user"></i>
+                <div class="profile-dropdown" >
+                    <div class="profile-dropdown-item">
+                        <a [routerLink]="['/favourites']">Favourites</a>
+                    </div>
+                    <div class="profile-dropdown-item">
+                        <a [routerLink]="['/orders']">Orders</a>
+                    </div>
+                    <div class="profile-dropdown-item">
+                        <a>Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <nav class="bottom-bar" appHeaderDropdown>
+        <div class="caret"></div>
+        <ul class="bar-items">
+            <li class="dropdown">
+                <a href="">Brands</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-section">
+                        @for (brand of brands; track brand) {
+                            <div class="dropdown-item">
+                                <img [src]="brand.logo" alt="logo" style="width: 27px; height: 27px;">
+                                <a [routerLink]="['/shoes-list', brand.name]">{{brand.name}}</a>
+                            </div>   
+                        } 
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="">Categories</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-section">
+                        @for (category of categories; track category) {
+                            <div class="dropdown-item">
+                                <a [routerLink]="['/shoes-list', category]">{{category}}</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="">New</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-section">
+                        <div class="dropdown-item">
+                            <a [routerLink]="['/shoes-list', 'sneakers']">Sneakers</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a [routerLink]="['/shoes-list', 'classic']">Classic</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a [routerLink]="['/shoes-list', 'men']">Men</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a [routerLink]="['/shoes-list', 'women']">Women</a>
+                        </div>
+                    </div>
+                </div>
+            </li> 
+            <li class="dropdown">
+                <a [routerLink]="['/shoes-list', 'men']">Men</a>
+            </li> 
+            <li class="dropdown">
+                <a [routerLink]="['/shoes-list', 'women']">Women</a>
+            </li> 
+            <li class="dropdown">
+                <a [routerLink]="['/shoes-list', 'kids']">Kids</a>
+            </li> 
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="title">
+        <h1>Favourites</h1>
+    </div>
+    <div class="favourites-list">
+        <app-favourites-item [shoe]="shoe" [brand]="getShoeBrandName(shoe.brand)" *ngFor="let shoe of favouriteShoes">
+        </app-favourites-item>
+    </div>
+</div>

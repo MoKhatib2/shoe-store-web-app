@@ -1,0 +1,327 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 11rem;
+}
+
+.top-bar {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    background: transparent;
+    width: inherit;
+    height: 55%;
+}
+
+.top-bar .right-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.right-side .shopping-cart, .right-side .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    width: 3em;
+    margin: 1em;
+    cursor: pointer;
+}
+
+.right-side .shopping-cart {
+    position: relative;
+}
+
+.shopping-cart i, .profile i {
+    font-size: 2em;
+}
+
+.shopping-cart .cart-size {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 1.2em;
+    width: 1.2em;
+    right: 0;
+    top: 0;
+    border-radius: 1em;
+    background: rgb(42, 98, 203);;
+}
+
+.cart-size p {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    right: 0;
+    top: 0;
+    font-size: 1em;
+    color: white;
+}
+
+h1 { 
+    color: rgb(7, 64, 82);
+    margin-left: 0.5em;
+    margin-bottom: 0.8em;
+    font-size: 3em;
+    font-weight: 700;
+    text-shadow: 10em;
+}
+
+.logo a {
+    color: rgb(42, 98, 203);
+    margin-left: 0.5em;
+    margin-bottom: 1.3em;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 10em;
+    text-decoration: none;
+  }
+
+.search {
+    position: relative;
+    margin-left: 8.3em;
+    flex: 1;
+}
+
+.search input {
+    width: 20em;
+    height: 2.5em;
+    padding-left: 2em; /* Add padding to avoid overlapping with the label */
+    background-color: white;
+    border-radius: 3em;
+    border: 1px solid #ccc;
+    font-size: 1.5em;
+}
+
+.search label {
+    position: absolute;
+    top: 50%;
+    left: 0.5em;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 1.5em;
+    font-family: inherit;
+}
+
+.search button{
+    background-color: transparent;
+    border: none;
+    margin-right: 0.5em;
+    cursor: pointer;
+}
+
+.search fa-icon {
+    font-size: 1.5em;
+}
+
+.search input:focus + label p,
+.search input:not(:placeholder-shown) + label p{
+    display: none; 
+}
+
+.login-btn {
+    margin-right: 0.5em;
+    width: 4em;
+    height: 2em;
+    background-color: black;
+    border-radius: 2em;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.bottom-bar {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    position: relative;
+    border-bottom: 2px solid  rgb(207, 207, 207);;
+    width: inherit;
+    height: 45%;
+}
+
+.bottom-bar .bar-items {
+    position: absolute;
+    left: 18em;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    list-style-type: none;
+}
+
+
+.dropdown {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 1em;
+    height: 80%;
+    width: 6em;
+    color: black;
+    cursor: pointer;
+}
+
+.dropdown a {
+    margin: auto;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: 600;
+    text-align: center;
+    color: black;
+}
+
+.dropdown-menu {
+    position: fixed;
+    top: 11.5em;
+    left: 20em;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid rgb(57, 56, 56);
+    border-radius: 7px;
+    display: none;
+    opacity: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* min-width: 300px; */
+    gap: 2rem;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+.caret {
+    content: '';
+    position: absolute;
+    top: 4.2em;
+    left: 24em;
+    width: 25px;
+    height: 25px;
+    border-top: 1px solid rgb(57, 56, 56);
+    border-left: 1px solid rgb(57, 56, 56);
+    transform: rotate(45deg);
+    background-color: white;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    transition: left 0.3s ease, opacity 0.3s ease; 
+    pointer-events: none;
+}
+
+
+.dropdown:hover .dropdown-menu {
+    display: flex;
+    opacity: 1;
+}
+
+
+.dropdown-section {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 500px;
+}
+
+.dropdown-section h4 {
+    margin-bottom: 0.5rem;
+    color: black;
+}
+
+.dropdown-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 7em;
+    height: 3em;
+    padding-right: 2em;
+}
+
+.dropdown-item a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+  .dropdown-section a:hover {
+  color: #0070f3;
+}
+
+
+.profile{
+    position: relative;
+    z-index: 2;
+}
+
+.profile i {
+
+}
+
+.profile .profile-dropdown {
+    display: none;
+    position: absolute; 
+    top: 100%;
+    left: -100%;
+    width: 200%;
+    z-index: 1;
+    background: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile.open .profile-dropdown {   
+   display: block;
+}
+
+.profile-dropdown-item {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    align-content: center;
+    border-radius: 4px;
+    padding: 5%;
+}
+
+.profile-dropdown-item a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    margin-right: 1em;
+}
+
+.profile-dropdown-item:hover {
+    background: rgb(193, 192, 192);
+}
+
+
+
+@media (max-width: 768px) {
+    .search {
+        margin-left: 0; /* Reset the margin for smaller screens */
+        width: 100%; /* Let it take the full width on small screens */
+    }
+}
+  
+ 
+  
+
+

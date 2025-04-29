@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="address-details" *ngIf="!editing">
+        <p>{{userAddress.streetName}} {{userAddress.buildingNumber}}</p>
+        <p>{{userAddress.apartmentNumber}}</p>
+        <p>{{userAddress.postCode}} {{userAddress.city}}</p>
+        <p>Egypt</p>
+        <button class="edit-btn" (click)="editing = true">Edit</button>
+    </div>
+    <button class="next-btn" (click)="onNext()" *ngIf="!editing">Next</button>
+    <div class="address-form-container" *ngIf="editing">
+        <form class="address-form" [formGroup]="addressForm">
+            <div class="label-input">
+                <label for="city">City</label>
+                <input type="text" name="city" formControlName="city" placeholder="" />
+            </div>
+            <div class="label-input">
+                <label for="postCode">Post Code</label>
+                <input type="number" name="postCode" formControlName="postCode" placeholder="" />
+            </div>
+            <div class="label-input">
+                <label for="streetName">Street Name</label>
+                <input type="text" name="streetName" formControlName="streetName" placeholder="" />
+            </div>
+            <div class="label-input">
+                <label for="buildingNumber">Building Number</label>
+                <input type="text" name="buildingNumber" formControlName="buildingNumber" placeholder="" />
+            </div>
+            <div class="label-input">
+                <label for="apartmentNumber">Apartment Number</label>
+                <input type="text" name="apartmentNumber" formControlName="apartmentNumber" placeholder="" />
+            </div>
+            <button type="submit" (click)="onSubmit()">Confirm</button>
+        </form>
+    </div>
+</div>

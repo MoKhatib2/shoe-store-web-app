@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="items-section">
+        <div class="title">
+            <h1>Your Cart ({{cartItems.length}})</h1>
+        </div>
+        <div class="cart-items">
+            <div class="cart-item" *ngFor="let cartItem of cartItems">
+                <div class="cart-item__image">
+                    <img [src]="getShoeVariant(cartItem.shoe, cartItem.variantId).mainImageUrl" alt="product image">
+                </div>
+                <div class="cart-item__details">
+                    <p class="brand">Adidas</p>
+                    <p class="name">{{cartItem.shoe.name}} - {{cartItem.shoe.category}}</p>
+                    <p class="price">{{cartItem.unitPrice * cartItem.quantity}} EGP</p>
+                    <p class="color">Colour: {{getShoeVariant(cartItem.shoe, cartItem.variantId).color}}</p>
+                    <p class="size">Size: {{cartItem.size}}</p>
+                </div>
+                <div class="cart-item__quantity">
+                    <button class="remove-btn" (click)="removeItem(cartItem._id, cartItem.quantity)">
+                        <fa-icon [icon]="faRemove"></fa-icon>
+                    </button>
+                    <div class="edit-quantity">
+                        <div class="dropdown" appDropdown>
+                            <div class="placeholder">
+                                <p>{{cartItem.quantity}}</p>
+                                <fa-icon class="caret-up" [icon]="faCaretUp"></fa-icon>
+                                <fa-icon class="caret-down" [icon]="faCaretDown"></fa-icon>
+                            </div>
+                            <div class="quantity-list">
+                                <div 
+                                    class="quantity-bar" 
+                                    (click)="onChooseQuantity(quantity, cartItem._id)"
+                                    *ngFor="let quantity of [1, 2, 3, 4, 5, 6]">
+                                    <div class="item">
+                                        <p class="quantity-number">{{quantity}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart-total">
+        <div class="subtotal">
+            <p>Subtotal</p>
+            <p>{{getSubTotal()}} EGP</p>
+        </div>
+        <div class="delivery">
+            <p>Delivery</p>
+            <p>{{0}} EGP</p>
+        </div>
+        <div class="total">
+            <p>Total</p>
+            <p>{{getSubTotal()}} EGP</p>
+        </div>
+        <div class="checkout">
+            <button (click)="onGoToCheckout()" class="checkout-btn">Go To Checkout</button>
+        </div>
+    </div>  
+</div>

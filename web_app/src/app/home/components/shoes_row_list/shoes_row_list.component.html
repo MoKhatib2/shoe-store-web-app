@@ -1,0 +1,28 @@
+<div class="main">
+    <div class="top">
+        <h1>{{name}}</h1>
+        <a [routerLink]="['/shoes-list', name]" >
+            <p>See All</p>
+            <fa-icon [icon]="faArrowRight"></fa-icon>
+        </a>
+    </div>
+    <div class="list">
+        <app-shoe-item 
+            *ngFor="let shoe of shoes" 
+            [shoe]="shoe" 
+            [brand]="getShoeBrandName(shoe.brand)">
+        </app-shoe-item>
+        <!-- <div class="item" *ngFor="let shoe of shoes">
+            <a>
+                <i class="fa-regular fa-heart" *ngIf="!isFavourite(shoe._id)"></i>
+                <i class="fa-solid fa-heart" *ngIf="isFavourite(shoe._id)"></i>
+            </a>
+            <img [src]="shoe.variants[0].mainImageUrl" alt="">
+            <div class="details">
+                <p class="brand">{{getShoeBrandName(shoe.brand)}}</p>
+                <p class="name">{{shoe.name}}</p>
+                <p class="price">{{shoe.variants[0].price}} EGP</p>
+            </div>
+        </div> -->
+    </div>
+</div>

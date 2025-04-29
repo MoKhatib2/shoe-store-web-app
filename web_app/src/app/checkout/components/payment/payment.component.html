@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="payment-methods">
+        <div class="cash method-container">
+            <div (click)="onSelectMethod('cash')" class="left">
+                <div [style.background]="(selectedPaymentMethod === 'cash') ? 'none' : ''" class="radio-circle">
+                    <div class="filled" *ngIf="selectedPaymentMethod === 'cash'"></div>
+                </div>
+                <div class="title">
+                    <h2 [style.font-weight]="(selectedPaymentMethod === 'cash') ? 600 : 400">Cash</h2>
+                </div>
+            </div>
+            <div class="right">
+                <div class="icons">
+                    <i class="fa-solid fa-money-bill"></i>
+                </div>
+            </div>
+        </div>
+        <div class="card method-container">
+            <div (click)="onSelectMethod('card')" class="left">
+                <div [style.background]="(selectedPaymentMethod === 'card') ? 'none' : ''" class="radio-circle">
+                    <div class="filled" *ngIf="selectedPaymentMethod === 'card'"></div>
+                </div>
+                <div class="title">
+                    <h2 [style.font-weight]="(selectedPaymentMethod === 'card') ? 600 : 400">Credit / Debit Card</h2>
+                </div>
+            </div>
+            <div class="right">
+                <div class="icons">
+                    <i class="fa-regular fa-credit-card"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="total-container">
+        <div class="delivery">
+            <p>Delivery</p>
+            <p>{{0}} EGP</p>
+        </div>
+        <div class="total">
+            <p>Total</p>
+            <p>{{getSubTotal()}} EGP</p>
+        </div>
+        <div class="next">
+            <button (click)="onNext()" class="next-btn">Next</button>
+        </div>
+    </div>
+</div>

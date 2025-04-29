@@ -1,0 +1,63 @@
+<div class="filters">
+    <div class="top">
+        <h2>Filters</h2>
+        <div class="buttons">
+            <button (click)="onApply()">Apply</button>
+            <button (click)="onClear()">Clear</button>
+        </div>
+    </div>
+    <div class="brand-filter" *ngIf="!disableBrandsFilter">
+        <div class="filter-title">
+            <h1>Brand</h1>
+        </div>
+        <div class="filter-options">
+            <form action="">
+                <ul>
+                    @for(brand of brands; track brand) {
+                        <li>
+                            <input type="checkbox" [id]="brand.name" [name]="brand.name" (change)="editSelectedBrands(brand, $event)"/>
+                            <label [for]="brand.name">{{brand.name}}</label>
+                            <p>2</p>
+                        </li>
+                    }  
+                </ul>
+            </form>
+        </div>
+    </div>
+
+    <div class="size-filter">
+        <div class="filter-title">
+            <h1>Size</h1>
+        </div>
+        <div class="filter-options">
+            <ul>
+                    @for(size of sizes; track size) {
+                        <li>
+                            <input type="checkbox" [id]="size" [name]="size" (change)="editSelectedSizes(size, $event)"/>
+                            <label [for]="size">{{size}}</label>
+                        </li>
+                    }  
+                </ul>
+        </div>
+    </div>
+
+    <div class="price-filter">
+        <div class="filter-title">
+            <h1>Price</h1>
+        </div>
+        <div class="filter-options">
+            <mat-slider min="500" max="30000">
+                <input [(ngModel)]="minPrice" matSliderStartThumb>
+                <input [(ngModel)]="maxPrice" matSliderEndThumb>
+            </mat-slider>
+            <div class="number-input">
+                <label for="min">Min</label>
+                <input [(ngModel)]="minPrice" type="number" id="min">
+            </div>
+            <div class="number-input">
+                <label for="max">Max</label>
+                <input [(ngModel)]="maxPrice" type="number" id="max">
+            </div>
+        </div>
+    </div>
+</div>

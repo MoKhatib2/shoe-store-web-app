@@ -1,0 +1,192 @@
+.filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    align-content: center;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.brand-filter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 2em;
+    height: 300px;
+    width: 330px;
+    border: 1px solid rgb(198, 196, 196);
+    border-radius: 8px;
+}
+
+.price-filter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 2em;
+    height: 250px;
+    width: 330px;
+    border: 1px solid rgb(198, 196, 196);
+    border-radius: 8px;
+}
+
+.size-filter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 2em;
+    height: 300px;
+    width: 330px;
+    border: 1px solid rgb(198, 196, 196);
+    border-radius: 8px;
+}
+
+
+mat-slider {
+    width: 90%;
+    /* transform: scale(2); */
+}
+
+
+
+.filter-title {
+    /* position: absolute; */
+    display: flex;
+    justify-content: flex-start;
+    /* top: 0; */
+    height: 20%;
+    width: 100%;
+    background: rgb(245, 244, 244);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.filter-options {
+    /* position: absolute;
+    bottom: 0; */
+    height: 80%;
+    width: 100%;
+    background: white;
+    border-top: 1px solid rgb(198, 196, 196);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    
+}
+
+.number-input {
+    width: 80%;
+}
+
+.filter-options ul {
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+.filter-options li {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+}
+
+.filter-options li input {
+    transform: scale(2);
+}
+
+.filter-options li label {
+    margin-left: 1.5em;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.filter-options p {
+    position: absolute;
+    right: 1em;
+    background: rgb(202, 200, 200);
+    padding: 0;
+    margin: 0;
+    width: 1.5em;
+    border-radius: 15px;
+    font-size: 1em;
+    text-align: center;
+}
+
+.number-input label {
+    margin-left: 1.5em;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.number-input input {
+    width: 60%;
+    height: 1.5em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    border: 1px solid rgb(157, 156, 156);
+    border-radius: 6px;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-left: 2em;
+}
+
+.brand-filter .filter-options {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.size-filter .filter-options ul{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.size-filter .filter-options li{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: 1.2em;
+    width: 1.8em;
+    height: 1.8em;
+}
+
+.size-filter .filter-options input{
+    width: 100%;
+    height: 100%;
+}
+ 
+.size-filter .filter-options input:checked{
+    appearance: none;
+    background: rgb(172, 172, 172);
+    border-radius: 3px;
+    height: 1.6em;
+}
+
+.size-filter .filter-options li label{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    /* transform: translate(-2.6em, 0); */
+}
+

@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="left">
+        <div class="title"> 
+            <h2>Order Number: {{order.orderNumber}}</h2>
+        </div>
+        <div class="order">
+            <div class="title"> 
+                <i class="fa-solid fa-bag-shopping"></i>
+                <h2>Items</h2>
+            </div>
+            <div class="cart-items">
+                <div class="cart-item" *ngFor="let item of items">
+                    <div class="cart-item__image">
+                        <img [src]="getShoeVariant(item.shoe, item.variantId).mainImageUrl" alt="product image">
+                    </div>
+                    <div class="cart-item__details">
+                        <p class="brand">Adidas</p>
+                        <p class="name">{{item.shoe.name}} - {{item.shoe.category}}</p>
+                        <p class="price">{{item.unitPrice * item.quantity}} EGP</p>
+                        <p class="color">Colour: {{getShoeVariant(item.shoe, item.variantId).color}}</p>
+                        <p class="size">Size: {{item.size}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="expected-delivery">
+            <div class="title"> 
+                <i class="fa-solid fa-calendar-week"></i>
+                <h2>Expected delivery</h2>
+            </div>
+            <div class="delivery-date">
+                <p class="date">2-4 days</p>
+                <p class="delivery-type">Standard Delivery</p>
+                <p class="price">Free</p>
+            </div>
+        </div> 
+        <div class="address">
+            <div class="title">
+                <i class="fa-solid fa-location-dot"></i>
+                <h2>Delivery address</h2>
+            </div>
+            <div class="address-details">
+                <p>{{currUser.address.streetName}} {{currUser.address.buildingNumber}}</p>
+                <p>{{currUser.address.apartmentNumber}}</p>
+                <p>{{currUser.address.postCode}} {{currUser.address.city}}</p>
+            </div>
+        </div>
+        <div class="payment-method">
+            <div class="title">
+                <i class="fa-solid fa-wallet"></i>
+                <h2>Payment method</h2>
+            </div>
+            <div class="payment-details">
+                <div class="cash" *ngIf="order.paymentMethod === 'cash'">
+                    <i class="fa-solid fa-money-bill"></i>
+                    <p>Cash on delivery</p>
+                </div>
+                <div class="card" *ngIf="order.paymentMethod === 'card'">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <p>Credit/Debit card</p>
+                </div>
+            </div>
+        </div>
+        <div class="total-container">
+            <div class="delivery">
+                <p>Delivery</p>
+                <p>{{0}} EGP</p>
+            </div>
+            <div class="total">
+                <p>Total</p>
+                <p>{{order.totalItemsPrice}} EGP</p>
+            </div>
+            <!-- <div class="next">
+                <button (click)="onConfirm()" class="next-btn">Confirm</button>
+            </div> -->
+        </div>
+    </div>
+</div>

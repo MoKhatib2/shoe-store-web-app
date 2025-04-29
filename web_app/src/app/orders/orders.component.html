@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="title">
+        <h1>Orders</h1>
+    </div>
+    <div class="orders-list">
+        <div class="order-item" *ngFor="let order of orderDetails">
+            <div class="order-details">
+                <h2>Order Number: {{ order.orderNumber }}</h2>
+                <p *ngIf="order.orderPlacedAt">Order placed: {{ order.orderPlacedAt | date:'shortDate'}}</p>
+                <p>Status: {{ order.status }}</p>
+                <p>Total: {{ order.totalItemsPrice }} EGP</p>
+            </div>
+            <div class="shoes-list" *ngFor="let item of order.items;let i = index">
+                <div class="shoe-item__image" *ngIf="i<2">
+                    <img [src]="getShoeVariant(item.shoe, item.variantId).mainImageUrl" alt="product image">
+                </div>
+            </div>
+            <div class="order-actions">
+                <button (click)="goToOrderDetails(order._id)">
+                    <p>View Order Details</p>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

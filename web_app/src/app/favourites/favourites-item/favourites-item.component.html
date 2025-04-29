@@ -1,0 +1,14 @@
+<div class="item" (click)="onClick($event, shoe._id)">
+    <button (click)="removeFromFavourites(shoe._id)" class="remove-btn" #removeButton> 
+        <i class="fa-solid fa-x"></i>
+    </button>
+    <div class="image-container">
+        <img [src]="shoe.variants[0].mainImageUrl" alt="">
+    </div>
+    
+    <div class="details">
+        <p class="brand">{{brand}}</p>
+        <p class="name">{{shoe.name}}</p>
+        <p class="price">{{shoe.variants[0].price}} EGP</p>
+    </div>
+</div>

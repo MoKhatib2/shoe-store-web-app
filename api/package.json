@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Shoe Store app api",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "deep-email-validator": "^0.1.21",
+    "dotenv": "^16.4.5",
+    "email-validator": "^2.0.4",
+    "express": "^4.21.0",
+    "express-requests-logger": "^4.0.1",
+    "google-auth-library": "^9.14.2",
+    "handlebars": "^4.7.8",
+    "jsonwebtoken": "^9.0.2",
+    "logger": "^0.0.1",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.6.2",
+    "nodemailer": "^6.9.15",
+    "nodemon": "^3.1.4",
+    "path": "^0.12.7",
+    "process": "^0.11.10"
+  }
+}

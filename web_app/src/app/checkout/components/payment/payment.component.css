@@ -1,0 +1,123 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 1em;
+}
+
+.payment-methods {
+    width: 50%;
+}
+
+.method-container {
+    width: 100%;
+    height: 6em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: start;
+    border-bottom: 1px solid rgb(189, 189, 189);
+}
+
+.method-container .left {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+}
+
+.left .radio-circle {
+    width: 1.9em;
+    height: 1.9em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border-radius: 1.9em;
+    border: 2px solid black;
+}
+
+.method-container .left:hover .radio-circle {
+    background: rgb(189, 189, 189);
+}
+
+.radio-circle .filled {
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 1em;
+    background: black;
+}
+
+.left .title {
+    margin-left: 1em;
+}
+
+.title h2 {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.right .icons {
+    margin-right: 1em;
+}
+
+.icons i{
+    font-size: 26px;
+}
+
+.total-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 16em;
+    background: rgb(233, 233, 233);
+}
+
+.subtotal , .delivery, .total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 80%;
+    height: 3em;
+}
+
+.delivery{
+    border-bottom: 1px solid rgb(90, 89, 89);
+    padding-bottom: 1em;
+}
+
+.subtotal p, .delivery p, .total p {
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    margin: 0em;
+    padding: 0em;
+}
+
+.next {
+    width: 80%;
+}
+
+.next-btn {
+    width: 100%;
+    height: 2em;
+    background: black;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    margin-top: 2em;
+}
+
+
+

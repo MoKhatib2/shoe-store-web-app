@@ -1,0 +1,538 @@
+/* .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    align-content: center;
+    margin-top: 2em;
+}
+
+.left {
+    width: 60%;
+}
+
+.right {
+    width: 40%;
+}
+
+.expected-delivery {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.title i {
+    font-size: 22px;
+    margin-right: 0.5em;
+}
+
+.title h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.delivery-date {
+    margin-left: 1em;
+}
+
+.delivery-date .date {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+
+.delivery-date .delivery-type {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(153, 152, 152);
+}
+
+.delivery-date .price {
+    font-size: 18px;
+    font-weight: 800;
+    color: black;
+}
+
+.order {
+    margin-top: 4em;
+}
+
+.items-section {
+    margin-top: 4em;
+}
+
+.cart-items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    align-content: center;
+}
+
+.cart-item {
+    width: 90%;
+    height: 10em;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    align-content: center;
+    border-bottom: 1px solid rgb(90, 89, 89);
+}
+
+.cart-item__image {
+    width: 10em;
+    height: 10em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-right: 1em;
+}
+
+.cart-item__image img {
+    max-width: 100%;
+    width: 10em;
+    height: 10em;
+}
+
+
+.cart-item__details{
+    width: 60%;
+}
+
+p{
+    margin: 0em;
+}
+
+.brand {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+
+.cart-item__details .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.color {
+    font-size: 18px;
+    font-weight: 500;
+    color: gray;
+}
+
+.size {
+    font-size: 18px;
+    font-weight: 500;
+    color: gray;
+}
+
+.cart-item__quantity {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    align-content: center;
+    margin-left: 2em;
+}
+
+.cart-item__quantity .remove-btn {
+    background: none;
+    border: none;
+    width: 3em;
+    height: 3em;
+    margin-top: 0.5em;
+    cursor: pointer;
+}
+
+.cart-item__quantity .remove-btn:hover {
+    background: rgb(219, 219, 219);
+}
+
+.remove-btn fa-icon {
+    font-size: 26px;
+    color: black;
+}
+
+.address {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.address-details {
+    margin-left: 1em;
+}
+
+.address-details p {
+    margin: 0;  
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+
+.payment-method {
+    margin-top: 4em;
+}
+
+.payment-details {
+    margin-left: 1em;
+}
+
+.cash, .card {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    align-content: center;
+    margin-top: 1em;
+}
+
+.cash i, .card i {
+    font-size: 18px;
+    margin-right: 1em;
+}
+
+.cash P, .card P {
+    margin: 0;
+    font-size: 18px;
+}
+
+.total-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 16em;
+    background: rgb(233, 233, 233);
+    margin-top: 4em;
+}
+
+.subtotal , .delivery, .total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 80%;
+    height: 3em;
+}
+
+.delivery{
+    border-bottom: 1px solid rgb(90, 89, 89);
+    padding-bottom: 1em;
+}
+
+.subtotal p, .delivery p, .total p {
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    margin: 0em;
+    padding: 0em;
+}
+
+.next {
+    width: 80%;
+}
+
+.next-btn {
+    width: 100%;
+    height: 2em;
+    background: black;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    margin-top: 2em;
+}
+
+
+ */
+
+ .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    gap: 2em;
+    margin-top: 2em;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0em;
+}
+
+.left {
+    width: 55%;
+}
+
+.right {
+    width: 40%;
+}
+
+.expected-delivery {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.delivery-date {
+    margin-left: 1em;
+}
+
+.delivery-date .date {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+
+.delivery-date .delivery-type {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(153, 152, 152);
+}
+
+.delivery-date .price {
+    font-size: 18px;
+    font-weight: 800;
+    color: black;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.title i {
+    font-size: 22px;
+    margin-right: 0.5em;
+}
+
+.title h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.order {
+    margin-top: 2em;
+}
+
+.cart-items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em; /* Adds spacing between items */
+    max-height: 500px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.cart-item {
+    height: 10em;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(90, 89, 89);
+    padding: 1em 0;
+}
+
+.cart-item__image {
+    flex: 0 0 10em; /* Fixed size for the image */
+    height: 10em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+}
+
+.cart-item__image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.cart-item__details {
+    flex: 1; /* Flexible width */
+    min-width: 200px; /* Ensures a minimum width */
+    
+}
+
+.brand {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+
+.cart-item__details .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.color {
+    font-size: 18px;
+    font-weight: 500;
+    color: gray;
+}
+
+.size {
+    font-size: 18px;
+    font-weight: 500;
+    color: gray;
+}
+
+.cart-item__quantity {
+    position: absolute;
+    top: 0.6em;
+    right: 0em;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-end;
+}
+
+.cart-item__quantity .remove-btn {
+    background: none;
+    border: none;
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+}
+
+.cart-item__quantity .remove-btn:hover {
+    background: rgb(219, 219, 219);
+}
+
+.remove-btn fa-icon {
+    font-size: 26px;
+    color: black;
+}
+
+.address, .payment-method, .total-container {
+    width: 100%;
+    margin-top: 2em;
+}
+
+.total-container {
+    background: rgb(233, 233, 233);
+    padding: 2em;
+    box-sizing: border-box;
+}
+
+.subtotal , .delivery, .total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 3em;
+}
+
+.delivery{
+    border-bottom: 1px solid rgb(90, 89, 89);
+    padding-bottom: 1em;
+}
+
+.subtotal p, .delivery p, .total p {
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    margin: 0em;
+    padding: 0em;
+}
+
+.cash, .card {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    align-content: center;
+    margin-top: 1em;
+}
+
+.cash i, .card i {
+    font-size: 18px;
+    margin-right: 1em;
+}
+
+.cash P, .card P {
+    margin: 0;
+    font-size: 18px;
+}
+
+.next-btn {
+    width: 100%;
+    height: 2em;
+    background: black;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    margin-top: 2em;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stacks the layout vertically */
+        align-items: center;
+    }
+
+    .left, .right {
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    .cart-item {
+        flex-direction: column; /* Stacks cart item details vertically */
+        align-items: flex-start;
+    }
+
+    .cart-item__quantity {
+        align-items: flex-start;
+        margin-left: 0;
+        margin-top: 1em;
+    }
+}

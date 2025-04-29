@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="title">
+        <h1>Easy Shoes</h1>
+    </div>
+    <div class="code-container">
+        <div class="verify-text">
+            <i class="fa-solid fa-square-check"></i>
+            <h1>Verification Code</h1>
+            <p>Enter the verification code that was sent to your email address.</p>
+        </div>
+        <div class="code" [formGroup]="verificationCodeForm">
+            <input 
+                name='code'
+                type="number" 
+                [formControlName]="i" 
+                [id]="i"
+                class='code-input' 
+                (input) = 'onCodeChange(i, $event)'
+                *ngFor="let i of [0, 1, 2, 3, 4, 5]"/>
+        </div>
+        <button class="verify-btn" (click)="onVerify()">Verify</button>
+        <div class="resend">
+            <p>Didn't get a code? </p>
+            <a href="">Click to resend</a>
+        </div>
+    </div>
+</div>

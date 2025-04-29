@@ -1,0 +1,12 @@
+<div class="item" (click)="onClick($event)">
+    <button (click)="toggleFavourite()" #favouriteButton>
+        <i class="fa-regular fa-heart" *ngIf="!isFavourite"></i>
+        <i class="fa-solid fa-heart" *ngIf="isFavourite"></i>
+    </button>
+    <img [src]="shoe.variants[0].mainImageUrl" alt="">
+    <div class="details">
+        <p class="brand">{{brand}}</p>
+        <p class="name">{{shoe.name}}</p>
+        <p class="price">{{shoe.variants[0].price}} EGP</p>
+    </div>
+</div>

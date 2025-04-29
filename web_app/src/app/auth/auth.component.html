@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="title">
+        <h1>Easy Shoes</h1>
+    </div>
+    <div class="auth-container" [style]="{'height': nowShowing === 'login' ? '40em' : '55em'}">
+        <div class="login-signup">
+            <button 
+                class="select-login-btn" 
+                [style]="{'border-bottom': nowShowing === 'login' ? '1px solid rgb(73, 97, 235)' : ''}"
+                (click)="onSwitch('login')">
+                Login</button>
+            <button 
+                class="select-signup-btn"
+                [style]="{'border-bottom': nowShowing === 'signup' ? '1px solid rgb(73, 97, 235)' : ''}"
+                (click)="onSwitch('signup')">
+                Signup</button>
+        </div>
+        <app-error-box [errorMessage]="errorMessage" *ngIf="errorMessage"></app-error-box>
+        <div class="login-form-div" *ngIf="nowShowing === 'login'">
+            <form class="login-form" [formGroup]="loginForm">
+                <div class="label-input">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" formControlName="email" placeholder="" />
+                </div>
+                <div class="label-input">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" formControlName="password" placeholder="" />
+                    <p style="font-size: 15px; font-weight: 200; color: red;" 
+                       *ngIf="loginForm.get('password').touched && !loginForm.get('password').valid">
+                    Please enter a valid password.
+                    </p>
+                </div>
+                <button type="button" class="login-btn" (click)="onSubmit()">Login</button>
+                <div class="or-txt">
+                    <p>or</p>
+                </div>
+                <button type="button" class="google-login-btn" (click)="onGoogleLogin()">
+                    <img src="../../assets/images/google logo.png" alt="" />
+                    Continue with Google
+                </button>
+            </form>
+        </div>
+        <div class="signup-form-div" *ngIf="nowShowing === 'signup'">
+            <form class="signup-form" [formGroup]="signupForm">
+                <div class="label-input">
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" id="firstName" formControlName="firstName" placeholder="" />
+                </div>
+                <div class="label-input">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" id="lastName" formControlName="lastName" placeholder="" />
+                </div>
+                <div class="label-input">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" formControlName="email" placeholder="" />
+                </div>
+                <div class="label-input">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" formControlName="password" placeholder="" />
+                </div>
+                <button type="button" class="login-btn" (click)="onSubmit()">Login</button>
+                <div class="or-txt">
+                    <p>or</p>
+                </div>
+                <button type="button" class="google-login-btn" (click)="onGoogleLogin()">
+                    <img src="../../assets/images/google logo.png" alt="" />
+                    Continue with Google
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

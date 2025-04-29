@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="status-bar">
+        <div class="status-point" [ngClass]="nowShowing != 'address' ? 'finished' : 'current'" (click)="onSelect('address')">
+            <div class="circle">
+                @if(nowShowing != 'address') {
+                    <i class="fa-solid fa-check"></i>
+                }
+                @else {
+                   <p>1</p>
+                }
+            </div>
+            <p class="title">Address</p>
+        </div>
+        <div class="connecting-line" [ngClass]="nowShowing != 'address' ? 'finished' : ''"></div>
+        <div 
+            class="status-point" 
+            [ngClass]="nowShowing === 'payment' ? 'current' : ''"
+            [ngClass]="nowShowing === 'confirm' || nowShowing === 'done' ? 'finished' : ''" 
+            (click)="onSelect('payment')">
+            <div class="circle">
+                @if(nowShowing === 'confirm' || nowShowing === 'done') {
+                    <i class="fa-solid fa-check"></i>
+                }
+                @else {
+                    <p>2</p>
+                }
+            </div>
+            <p class="title">Payment</p>
+        </div>
+        <div class="connecting-line" [ngClass]="nowShowing === 'confirm' || nowShowing === 'done' ? 'finished' : ''"></div>
+        <div 
+            class="status-point" 
+            [ngClass]="nowShowing === 'confirm' ? 'current' : ''"
+            [ngClass]="nowShowing === 'done' ? 'finished' : ''"
+            (click)="onSelect('confirm')" >
+            <div class="circle">
+                @if(nowShowing === 'done') {
+                    <i class="fa-solid fa-check"></i>
+                }
+                @else {
+                    <p>3</p>
+                }
+            </div>
+            <p class="title">Confirm</p>
+        </div>
+        <div class="connecting-line" [ngClass]="nowShowing === 'done' ? 'finished' : ''"></div>
+        <div class="status-point"  [ngClass]="nowShowing === 'done' ? 'current' : ''">
+            <div class="circle">
+                <p>4</p>
+            </div>
+            <p class="title">Done</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="title"> 
+            <h1>
+                {{nowShowing | titlecase }}
+            </h1>
+        </div>
+        <app-address (next)="onNext($event)" *ngIf="nowShowing === 'address'"></app-address>
+        <app-payment (next)="onNext($event)" (method)="onSelectPaymentMethod($event)" *ngIf="nowShowing === 'payment'"></app-payment>
+        <app-confirm (next)="onNext($event)" (order)="onConfirmOrder($event)" *ngIf="nowShowing === 'confirm'"></app-confirm>
+        <app-done [order]="order" (next)="onNext($event)" *ngIf="nowShowing === 'done'"></app-done>
+    </div>
+</div>
+
