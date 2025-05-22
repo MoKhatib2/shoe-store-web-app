@@ -4,23 +4,50 @@
             <a href="/">Easy Shoes</a>
         </div>
         <div class="search">
-            <input type="text" id="search" placeholder="">
-            <label for="search">
-                <button class="search-btn">
-                    <fa-icon [icon]="faSearch"></fa-icon>
-                </button>     
-                <p>Search</p>
-            </label>
+            <form (ngSubmit)="onSearch()" [formGroup]="searchForm" autocomplete="off" > 
+                <input type="text" id="search" formControlName="searchQuery" placeholder="Search for shoes...">
+                <label for="search">
+                    <button type="submit" class="search-btn">
+                        <fa-icon [icon]="faSearch"></fa-icon>
+                    </button>     
+                </label>
+            </form>
         </div>
         <div class="right-side">
             <button class="login-btn" *ngIf="!isAuthenticated" [routerLink]="['/auth']">Login</button>
-            <div class="shopping-cart" (click)="goToCart()" *ngIf="isAuthenticated">
+            <div class="shopping-cart" (click)="goToCart()" *ngIf="isAuthenticated"  [ngClass]="{'open': isCartDropdownOpen}">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <div class="cart-size" *ngIf="this.currUser.cart.length > 0">
                     <p>{{this.currUser.cart.length}}</p>
                 </div>
             </div>
-            <div class="profile" *ngIf="isAuthenticated" appDropdown>
+            <div class="cart-dropdown-content" (mouseenter)="onCartDropdownMouseEnter()" (mouseleave)="onCartDropdownMouseLeave()">
+                <h3>Your Cart</h3>
+                <div class="cart-items">
+                    @for (cartItem of cartItems; track cartItem) {
+                        <div class="cart-item">
+                            <img [src]="getCartItemImage(cartItem)" alt="shoe">
+                            <div class="item-details">
+                                <p class="item-name">{{cartItem.shoe.name}}</p>
+                                <p class="item-price">{{cartItem.unitPrice * cartItem.quantity}} EGP</p>
+                                <p class="item-size">Size: {{cartItem.size}}</p>
+                                <p>Quantity: {{cartItem.quantity}}</p>
+                            </div>
+                            <button class="remove-item" (click)="removeItem(cartItem._id, cartItem.quantity)">
+                                <i class="fa-solid fa-x"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+                <div class="cart-footer">
+                    <div class="total">
+                        <span>Total:</span>
+                        <span>${{cartTotal}}</span>
+                    </div>
+                    <button class="cart-btn" (click)="goToCart()">Go to Cart</button>
+                </div>
+            </div>
+            <div class="profile" *ngIf="isAuthenticated">
                 <i class="fa-solid fa-user"></i>
                 <div class="profile-dropdown" >
                     <div class="profile-dropdown-item">
@@ -34,15 +61,14 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div>   
     </div>
     <nav class="bottom-bar" appHeaderDropdown>
         <div class="caret"></div>
         <ul class="bar-items">
             <li class="dropdown">
                 <a href="">Brands</a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu">  
                     <div class="dropdown-section">
                         @for (brand of brands; track brand) {
                             <div class="dropdown-item">

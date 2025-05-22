@@ -14,40 +14,17 @@ import { ShoeService } from "../shared/services/shoe.service";
     styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-    shoes: Shoe[] = [new Shoe(
-        "66eacae85a27f1702dd46f7e", 
-        "Campus 00s Shoes",
-        "men",
-        false,
-        "lifestyle",
-        "66eac7a6b8f35960f28f9b96",
-        [
-            {
-              "color": "black",
-              "sizes": [
-                {
-                  "size": 43,
-                  "stock": 10,
-                },
-                {
-                  "size": 44,
-                  "stock": 5,
-                }
-              ],
-              "mainImageUrl": "http://localhost:3000/images/66eacae85a27f1702dd46f7e/black/mainImage.png",
-              "imagesUrls": [],
-              "_id":  "66eacae85a27f1702dd46f7f",
-              "price": 7000
-            }
-        ],
-        []
-    )]
+    trendingShoes: Shoe[] = [];
+    featuredShoes: Shoe[] = [];
+    menShoes: Shoe[] = [];
+    womenShoes: Shoe[] = [];
 
     constructor(private shoeService: ShoeService){}
 
     ngOnInit(): void {  
-        this.shoeService.shoesSubject.subscribe((shoes) => {
-          this.shoes = shoes
-        })
+      this.trendingShoes = this.shoeService.getShoesByTag('trending')
+      this.featuredShoes = this.shoeService.getShoesByTag('featured')
+      this.menShoes = this.shoeService.getShoesByTag('Men')
+      this.womenShoes = this.shoeService.getShoesByTag('Women')
     }
 }

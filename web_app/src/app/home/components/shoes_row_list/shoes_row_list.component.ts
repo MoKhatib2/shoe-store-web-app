@@ -18,8 +18,9 @@ import { RouterModule } from "@angular/router";
 })
 export class ShoesRowListComponent implements OnInit{
     @Input() name: String = '';
+    @Input() tag: String = '';
     @Input() shoes: Shoe[] = [];
-    favourites: String[] = ["66eacae85a27f1702dd46f7e"];
+    favourites: String[] = [];
     faHeart = faHeart;
     faArrowRight = faArrowRight;
     brands: Brand[] = [];
@@ -30,8 +31,8 @@ export class ShoesRowListComponent implements OnInit{
         this.shoeService.getBrands();
         this.shoeService.brandsSubject.subscribe(brands => {
             this.brands = brands
-            console.log(brands)
         }); 
+        this.shoes = this.shoes.slice(0, 5);
     }
 
     getShoeBrandName(brandId: String) {

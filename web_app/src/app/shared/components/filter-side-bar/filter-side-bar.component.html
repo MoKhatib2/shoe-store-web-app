@@ -2,8 +2,8 @@
     <div class="top">
         <h2>Filters</h2>
         <div class="buttons">
-            <button (click)="onApply()">Apply</button>
-            <button (click)="onClear()">Clear</button>
+            <button (click)="onApply()" class="apply-btn">Apply</button>
+            <button (click)="onClear()" class="clear-btn">Clear</button>
         </div>
     </div>
     <div class="brand-filter" *ngIf="!disableBrandsFilter">
@@ -11,15 +11,16 @@
             <h1>Brand</h1>
         </div>
         <div class="filter-options">
-            <form action="">
-                <ul>
-                    @for(brand of brands; track brand) {
-                        <li>
-                            <input type="checkbox" [id]="brand.name" [name]="brand.name" (change)="editSelectedBrands(brand, $event)"/>
-                            <label [for]="brand.name">{{brand.name}}</label>
-                            <p>2</p>
-                        </li>
-                    }  
+            <form [formGroup]="brandsForm">
+                <ul formArrayName="brands">
+                    <li *ngFor="let brand of brands; let i = index">
+                        <input 
+                            type="checkbox" 
+                            [id]="brand.name" 
+                            [formControlName]="i" />
+                        <label [for]="brand.name">{{ brand.name }}</label>
+                        <p>{{getBrandsCount(brand)}}</p>
+                    </li>
                 </ul>
             </form>
         </div>
@@ -30,14 +31,17 @@
             <h1>Size</h1>
         </div>
         <div class="filter-options">
-            <ul>
-                    @for(size of sizes; track size) {
-                        <li>
-                            <input type="checkbox" [id]="size" [name]="size" (change)="editSelectedSizes(size, $event)"/>
-                            <label [for]="size">{{size}}</label>
-                        </li>
-                    }  
+            <form [formGroup]="sizesForm" action="">
+                <ul formArrayName="sizes">
+                    <li  *ngFor="let size of sizes; let i = index">
+                        <input 
+                            type="checkbox" 
+                            [id]="size" 
+                            [formControlName]="i" />
+                        <label [for]="size">{{size}}</label>
+                    </li>
                 </ul>
+            </form>
         </div>
     </div>
 

@@ -7,11 +7,12 @@ import { ShoeService } from './shared/services/shoe.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './auth/auth.service';
 import { User } from './shared/models/user.model';
+import { LoaderComponent } from "./shared/components/loader/loader.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, CommonModule],
+  imports: [RouterOutlet, HeaderComponent, CommonModule, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

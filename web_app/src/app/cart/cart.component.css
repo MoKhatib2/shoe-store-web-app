@@ -24,6 +24,7 @@
 }
 
 .cart-item {
+    position: relative;
     width: 90%;
     height: 15em;
     display: flex;
@@ -90,6 +91,9 @@ p{
 }
 
 .cart-item__quantity {
+    position: absolute;
+    top: 0;
+    right: 0;
     height: 100%;
     display: flex;
     flex-direction: column;

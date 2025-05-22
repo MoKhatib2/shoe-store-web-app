@@ -26,7 +26,6 @@ export class CartComponent implements OnInit {
     //get curr user from auth service
     this.userService.getCartDetails().subscribe({
       next: (cartItems) => {
-        console.log(cartItems)
         this.cartItems = cartItems;
       },
       error: (error) => {

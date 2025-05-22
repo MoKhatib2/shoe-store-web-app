@@ -1,7 +1,11 @@
 <div class="item" (click)="onClick($event)">
-    <button (click)="toggleFavourite()" #favouriteButton>
-        <i class="fa-regular fa-heart" *ngIf="!isFavourite"></i>
-        <i class="fa-solid fa-heart" *ngIf="isFavourite"></i>
+    <button 
+        (click)="toggleFavourite()" 
+        (mouseenter)="hovering = true" 
+        (mouseleave)="hovering = false" 
+        #favouriteButton>
+            <i class="fa-regular fa-heart" style="font-weight: 300;" *ngIf="!isFavourite && !hovering"></i>
+            <i class="fa-solid fa-heart" style="color: red;" *ngIf="isFavourite || hovering"></i>
     </button>
     <img [src]="shoe.variants[0].mainImageUrl" alt="">
     <div class="details">

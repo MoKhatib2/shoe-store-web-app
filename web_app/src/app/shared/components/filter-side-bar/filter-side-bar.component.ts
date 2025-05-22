@@ -13,13 +13,12 @@ import {MatSliderModule} from '@angular/material/slider';
   styleUrl: './filter-side-bar.component.css'
 })
 export class FilterSideBarComponent implements OnInit{
-onClear() {
-throw new Error('Method not implemented.');
-}
-  @Input() disableBrandsFilter = false
+  @Input() disableBrandsFilter = false;
+  @Input() numOfShoesInBrands: { brandId: String, numOfShoes: number }[] = [];
   brands: Brand[] = [];
   sizes: Number[] = [];
-  // filters: FormGroup;
+  brandsForm: FormGroup;
+  sizesForm: FormGroup;
   selectedBrands: Brand[] = [];
   selectedSizes: Number[] = []
   minPrice: number = 500;
@@ -34,12 +33,28 @@ throw new Error('Method not implemented.');
         this.brands = brands
     });
     const minSize = 32;
-    this.sizes = Array(10).fill(0).map((x,i)=>i + minSize); 
-    // this.filters = new FormGroup({
-    //   brands: new FormArray([]),
-    //   minPrice: new FormControl(500, [Validators.required]),
-    //   maxPrice: new FormControl(30000, [Validators.required]),
-    // })
+    this.sizes = Array(12).fill(0).map((x,i)=>i + minSize); 
+    
+    this.brandsForm = new FormGroup({
+      brands: new FormArray(this.brands.map(brand => new FormControl(false)))
+    });
+
+    this.sizesForm = new FormGroup({
+      sizes: new FormArray(this.sizes.map(size => new FormControl(false)))
+    });
+  }
+
+  get brandsArray(): FormArray {
+    return this.brandsForm.get('brands') as FormArray;
+  }
+
+  get sizesArray(): FormArray {
+    return this.sizesForm.get('sizes') as FormArray;
+  }
+
+  getBrandsCount(brand: Brand): number {
+    const brandCount = this.numOfShoesInBrands.find(b => b.brandId === brand._id);
+    return brandCount ? brandCount.numOfShoes : 0;
   }
 
   editSelectedBrands(brand: Brand, event: Event) {
@@ -71,6 +86,12 @@ throw new Error('Method not implemented.');
   }
 
   onApply() {
+    this.selectedBrands = this.brands.filter((brand, index) => {
+      return this.brandsArray.at(index).value;
+    });
+    this.selectedSizes = this.sizes.filter((size, index) => {
+      return this.sizesArray.at(index).value;
+    });
     const filters = {
       brands: this.selectedBrands,
       sizes: this.selectedSizes,
@@ -78,5 +99,22 @@ throw new Error('Method not implemented.');
       maxPrice: this.maxPrice
     }
     this.appliedFilters.emit(filters);
+  }
+
+  onClear() {
+    this.selectedBrands = [];
+    this.selectedSizes = [];
+    this.minPrice = 500;
+    this.maxPrice = 30000;
+    const filters = {
+      brands: [],
+      sizes: [],
+      minPrice: 500,
+      maxPrice: 30000
+    }
+    this.appliedFilters.emit(filters);
+
+    this.brandsForm.reset();
+    this.sizesForm.reset();
   }
 }

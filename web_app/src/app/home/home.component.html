@@ -2,7 +2,29 @@
     <div class="shoes-list">
         <app-shoes-row-list 
         name="Trending" 
-        [shoes]="shoes">
+        tag="trending"
+        [shoes]="trendingShoes">
+        </app-shoes-row-list>
+    </div>
+    <div class="shoes-list">
+        <app-shoes-row-list 
+        name="Featured" 
+        tag="featured"
+        [shoes]="featuredShoes">
+        </app-shoes-row-list>
+    </div>
+    <div class="shoes-list">
+        <app-shoes-row-list 
+        name="For Her" 
+        tag="women"
+        [shoes]="womenShoes">
+        </app-shoes-row-list>
+    </div>
+    <div class="shoes-list">
+        <app-shoes-row-list 
+        name="For Him" 
+        tag="men"
+        [shoes]="menShoes">
         </app-shoes-row-list>
     </div>
 </div>

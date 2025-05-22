@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, catchError, tap, throwError } from "rxjs";
+import { BehaviorSubject, catchError, Observable, tap, throwError } from "rxjs";
 import { Brand } from "../models/brand.model";
 import { environment } from "../../../environments/environment.development";
 import { Shoe } from "../models/shoe.model";
@@ -13,8 +13,8 @@ export class UserService {
 
     constructor(private http: HttpClient, private authService: AuthService){}
 
-    getCartDetails() {
-        return this.http.get(environment.API_URI + '/private/customer/user/getCartDetails')
+    getCartDetails(): Observable<any[]> {
+        return this.http.get<any[]>(environment.API_URI + '/private/customer/user/getCartDetails')
         .pipe(
             catchError(this.handleError)
         );

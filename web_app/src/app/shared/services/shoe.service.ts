@@ -50,7 +50,11 @@ export class ShoeService {
         
     }
 
-    searchShoes() {
+    searchShoes(query: String) {
+        const filteredShoesList = this.shoes.filter((shoe) => {
+            return shoe.name.toLowerCase().includes(query.toLowerCase()) || this.getBrandById(shoe.brand).name.toLowerCase().includes(query.toLowerCase())
+        });
+        return filteredShoesList;
 
     }
 
