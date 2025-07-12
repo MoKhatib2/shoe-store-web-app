@@ -10,11 +10,12 @@ import { DropdownDirective } from '../../directives/dropown.directive';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Subscription } from 'rxjs';
+import { CartDropdownDirective } from '../../directives/cart_dropdown.directive';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, FontAwesomeModule, HeaderDropdown, DropdownDirective, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule, HeaderDropdown, CartDropdownDirective, ReactiveFormsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -129,11 +130,11 @@ export class HeaderComponent implements OnInit, OnDestroy{
   }
 
   onCartDropdownMouseEnter() {
-    this.isCartDropdownOpen = true;
+    // this.isCartDropdownOpen = true;
   }
 
   onCartDropdownMouseLeave() {
-    this.isCartDropdownOpen = false;
+    // this.isCartDropdownOpen = false;
   }
 }
 

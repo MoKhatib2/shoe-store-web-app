@@ -8,11 +8,11 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from './auth/auth.service';
 import { User } from './shared/models/user.model';
 import { LoaderComponent } from "./shared/components/loader/loader.component";
-
+import { FooterComponent } from "./shared/components/footer/footer.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, CommonModule, LoaderComponent],
+  imports: [RouterOutlet, HeaderComponent, CommonModule, LoaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -13,15 +13,15 @@
                 </label>
             </form>
         </div>
-        <div class="right-side">
+        <div class="right-side" appCartDropdown>
             <button class="login-btn" *ngIf="!isAuthenticated" [routerLink]="['/auth']">Login</button>
-            <div class="shopping-cart" (click)="goToCart()" *ngIf="isAuthenticated"  [ngClass]="{'open': isCartDropdownOpen}">
+            <div class="shopping-cart" #shoppingCart (click)="goToCart()" *ngIf="isAuthenticated"  [ngClass]="{'open': isCartDropdownOpen}">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <div class="cart-size" *ngIf="this.currUser.cart.length > 0">
                     <p>{{this.currUser.cart.length}}</p>
                 </div>
             </div>
-            <div class="cart-dropdown-content" (mouseenter)="onCartDropdownMouseEnter()" (mouseleave)="onCartDropdownMouseLeave()">
+            <div class="cart-dropdown-content" #cartDropdownContent (mouseenter)="onCartDropdownMouseEnter()" (mouseleave)="onCartDropdownMouseLeave()">
                 <h3>Your Cart</h3>
                 <div class="cart-items">
                     @for (cartItem of cartItems; track cartItem) {
